@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.view.MenuInflater;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -24,9 +26,10 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -35,6 +38,11 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            openSettings();
+            return true;
+        }
+        if (id == R.id.action_search) {
+            openSearch();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -48,6 +56,22 @@ public class MainActivity extends ActionBarActivity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+    }
+
+    /** Called when the user clicks the search button */
+    public void openSearch() {
+        TextView textView = (TextView) findViewById(R.id.action_search);
+        String message = textView.getText().toString();
+        textView.setText(message);
+        setContentView(textView);
+    }
+
+    /** Called when the user clicks the settings button */
+    public void openSettings() {
+        TextView textView = (TextView) findViewById(R.id.action_settings);
+        String message = textView.getText().toString();
+        textView.setText(message);
+        setContentView(textView);
     }
 
 }

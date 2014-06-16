@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application android:theme="@android:style/Theme.Holo.Light" />
+
   <!--Search, should appear as an action button and displays "Search"-->
     <item android:id="@+id/action_search"
           android:icon="@drawable/ic_action_search"
